@@ -1,0 +1,38 @@
+<div ng-controller="BulletinsController">
+
+
+  <header class="header">
+    <div>
+    <h1> Community Virtual Bulletin Board<h2>
+    </div>
+  </header>
+  <div class="container">
+    <ul class="bulletin">
+      <span class="posts" ng-repeat="bulletin in bulletins">
+        <div class="box">
+          <h3>
+            {{ bulletin.posted_by }}
+          </h3>
+          <p>
+            {{ bulletin.post_content }}
+          </p>
+        </div>
+      </span>
+
+    </ul>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
