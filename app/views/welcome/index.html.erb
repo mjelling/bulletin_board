@@ -9,7 +9,14 @@
   </header>
   <div class="container">
     <ul class="bulletin">
-      <span class="posts" ng-repeat="bulletin in bulletins">
+      <div class="box" id="post_box">
+        <h3>Input your Name</h3>
+        <input type="text" name="posted_by" class="posted_by"><br>
+        <h3>Input your content</h3>
+        <input type="text" name="post_content" class ="post_content">
+        <button ng-click="postBulletin()">Post</button>
+      </div>
+      <span class="posts" ng-repeat="bulletin in bulletins | orderBy: 'created_at':true">
         <div class="box">
           <h3>
             {{ bulletin.posted_by }}

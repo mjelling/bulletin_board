@@ -44,7 +44,15 @@ h1{
 	-ms-transform: skew(5deg) rotate(5deg);
 	-o-transform: skew(5deg) rotate(5deg);
 	transform: skew(5deg) rotate(5deg);
-}/*
+}
+
+#post_box{
+  display: none;
+}
+.post_content {
+  width: 90%;
+  height: 30em;
+  }/*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
  *

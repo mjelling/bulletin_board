@@ -14,4 +14,10 @@ class Api::BulletinsController < ApplicationController
     trash_bulletin.destroy
     render json: {bulletins: Bulletin.all}
   end
+
+private
+
+  def bulletin_params
+    params.require(:bulletin).permit(:posted_by, :post_content)
+  end
 end

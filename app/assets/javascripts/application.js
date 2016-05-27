@@ -19,21 +19,9 @@ bulletinBoard.controller("BulletinsController", ["$scope", "$http", function($sc
   };
 
   $scope.launchNewBox = function(){
-    $('.bulletin').prepend($('<div>').addClass('box').attr('id', 'post_box').append($("<h3>").text("Input Your Name")).append($("<input>",
-         { type:'text',
-           name:'posted_by'
-         }
-     ).addClass('posted_by')).append($("<br>")).append($("<h3>").text("Post Content")).
-     append($("<input>",
-          { type:'text',
-            name:'posted_content',
-            width: '90%',
-            height: '30em'
-          }
-      ).addClass('post_content')).append($("<br>")).
-      append($('<button>').attr('ng-click', '"postBuulletin()"'))
-    );
-};
+    $('#post_box').toggle();
+    console.log('hiding')
+  }
         //$("<input>",
           // { type:'submit',
             // value:"Submit",
@@ -43,19 +31,20 @@ bulletinBoard.controller("BulletinsController", ["$scope", "$http", function($sc
 
 
   $scope.postBulletin = function(){
-    var $postedBy = $('.posted_by').value;
-    var $postContent = $('.posted_content').value;
+    var $postedBy = $('.posted_by').val();
+    var $postContent = $('.post_content').val();
+    //console.log($postedBy);
     var newBulletin = {
       bulletin: {
         posted_by: $postedBy,
         post_content: $postContent
       }
-    }
+    };
+    console.log(newBulletin)
     $http.post('/api/bulletins', newBulletin)
-   .success(function (newBulletin) {
-   console.log("bulletin posted")
- }).then(function(){
+  .then(function(response){
    $scope.bulletin = {};
+   $scope.launchNewBox();
    $scope.renderBulletins();
    console.log('post function');
  })
